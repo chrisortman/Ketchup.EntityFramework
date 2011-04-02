@@ -1,0 +1,15 @@
+[B|b]in
+obj
+_ReSharper*
+
+*.resharper
+*.cache
+*~
+*.swp
+*.swo
+*.suo
+*.user
+*.bak
+*.orig
+
+*.nupkg
