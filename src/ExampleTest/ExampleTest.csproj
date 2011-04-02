@@ -51,6 +51,7 @@
       <Private>True</Private>
       <HintPath>..\packages\EntityFramework.SqlServerCompact.4.1.8482.1\lib\System.Data.SqlServerCe.Entity.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="WebActivator">
       <HintPath>..\packages\WebActivator.1.0.0.0\lib\WebActivator.dll</HintPath>
     </Reference>
@@ -62,10 +63,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EntityFramework.SqlServerCompact.cs" />
+    <Compile Include="ManualTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityFramework.PersistenceTest\EntityFramework.PersistenceTest.csproj">
+      <Project>{163D1619-7C50-4961-966F-B63B2D51117B}</Project>
+      <Name>EntityFramework.PersistenceTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Example\Example.csproj">
+      <Project>{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}</Project>
+      <Name>Example</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
