@@ -5,10 +5,8 @@ using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Ketchup.EntityFramework.Testing {
-	[TestClass]
 	public abstract class PersistenceTest<CONTEXT> where CONTEXT : DbContext {
 		public const string TESTDB_CONNECTION = "TestDb";
 
@@ -22,12 +20,6 @@ namespace Ketchup.EntityFramework.Testing {
 			get { return _efContext; }
 			set { _efContext = value; }
 		}
-
-		/// <summary>
-		///Gets or sets the test context which provides
-		///information about and functionality for the current test run.
-		///</summary>
-		public TestContext TestContext { get; set; }
 
 		//Have this so I can do begin trans / commit trans
 		//stuff if i need to
@@ -60,7 +52,7 @@ namespace Ketchup.EntityFramework.Testing {
 					}
 				}
 
-				Assert.Fail(message);
+				TestFrameworkAgnosticFail(message);
 			}
 			catch (UpdateException updateEx) {
 				if (updateEx.InnerException is SqlException) {
@@ -122,31 +114,38 @@ The statement has been terminated.";
 			UnitOfWork(r => {
 				var fromDb = r.Set<ENTITY>().First();
 
-				checkerInstance.Compare(fromDb, Assert.Fail);
+				checkerInstance.Compare(fromDb, TestFrameworkAgnosticFail);
 			});
 		}
 
-		[TestInitialize]
-		public void Setup() {
-			try {
-				//DbDatabase.SetInitializer(new MigrationDatabaseInitializer<WebDatabase>()
-				//{
-				//    AlwaysDrop = true, 
-				//    ConnectionStringName = TESTDB_CONNECTION,
-				//    ConnectionFactory = () => new SqlCeConnection()
-				//});
-				//DbDatabase.SetInitializer<PaymentSessionContainer>(null); //dont need initializer for this db since it is the same as web, but it will error if we dont do this
-
-
-				_efContext = CreateContext();
-				_efContext.Database.Initialize(true);
-			}
-			catch (ReflectionTypeLoadException rflEx) {
-				foreach (var lex in rflEx.LoaderExceptions) {
-					TestContext.WriteLine(lex.ToString());
+		private static void TestFrameworkAgnosticFail(string message) {
+			var mstestAssertType =
+				Type.GetType(
+					"Microsoft.VisualStudio.TestTools.UnitTesting.Assert,Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL",
+					false);
+			if (mstestAssertType != null) {
+				var failMethod = mstestAssertType.GetMethod("Fail", new[] {typeof (string)});
+				try {
+					failMethod.Invoke(null, new[] {message});
 				}
-				throw;
+				catch (TargetInvocationException tex) {
+					throw tex.InnerException;
+				}
 			}
+		}
+
+		public void SetupEntityFrameworkContext() {
+			//DbDatabase.SetInitializer(new MigrationDatabaseInitializer<WebDatabase>()
+			//{
+			//    AlwaysDrop = true, 
+			//    ConnectionStringName = TESTDB_CONNECTION,
+			//    ConnectionFactory = () => new SqlCeConnection()
+			//});
+			//DbDatabase.SetInitializer<PaymentSessionContainer>(null); //dont need initializer for this db since it is the same as web, but it will error if we dont do this
+
+
+			_efContext = CreateContext();
+			_efContext.Database.Initialize(true);
 		}
 
 		/// <summary>
@@ -168,8 +167,7 @@ The statement has been terminated.";
 			return Activator.CreateInstance<CONTEXT>();
 		}
 
-		[TestCleanup]
-		public void Teardown() {
+		public void CleanupEntityFrameworkContext() {
 			EfContext.Dispose();
 		}
 	}

@@ -34,6 +34,11 @@ namespace ExampleTest {
 	[TestClass]
 	public class AutomacTest : PersistenceTest<ExampleContext> {
 		
+		[TestInitialize]
+		public void Setup() {
+			SetupEntityFrameworkContext();
+		}
+
 		[TestMethod]
 		public void Can_save_and_fetch_a_customer() {
 			Check<Customer>(c => {
@@ -41,6 +46,12 @@ namespace ExampleTest {
 				c.Property(x => x.Birthday, new DateTime(1979, 12, 6));
 
 			});
+		}
+
+		[TestCleanup]
+		public void Teardown()
+		{
+			CleanupEntityFrameworkContext();
 		}
 	}
 }
