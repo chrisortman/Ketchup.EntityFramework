@@ -8,8 +8,8 @@
     <ProjectGuid>{163D1619-7C50-4961-966F-B63B2D51117B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EntityFramework.PersistenceTest</RootNamespace>
-    <AssemblyName>EntityFramework.PersistenceTest</AssemblyName>
+    <RootNamespace>Ketchup.EntityFramework</RootNamespace>
+    <AssemblyName>Ketchup.EntityFramework</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -59,12 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EntityFramework.SqlServerCompact.cs" />
-    <Compile Include="CollectionPropertyPersistenceCheck.cs" />
-    <Compile Include="ExternalLibraryBoundary.cs" />
-    <Compile Include="PersistenceCheck.cs" />
-    <Compile Include="PersistenceTest.cs" />
+    <Compile Include="Testing\CollectionPropertyPersistenceCheck.cs" />
+    <Compile Include="Testing\ExternalLibraryBoundary.cs" />
+    <Compile Include="Testing\ISetupEntityForTests.cs" />
+    <Compile Include="Testing\PersistenceCheck.cs" />
+    <Compile Include="Testing\PersistenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PropertyPersistenceCheck.cs" />
+    <Compile Include="Testing\PropertyPersistenceCheck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace EntityFramework.PersistenceTest {
+namespace Ketchup.EntityFramework.Testing {
 	public class PersistenceCheck<ENTITY> : ISetupEntityForTests<ENTITY> {
 		private readonly List<PropertyPersistenceCheck> _infos = new List<PropertyPersistenceCheck>();
 

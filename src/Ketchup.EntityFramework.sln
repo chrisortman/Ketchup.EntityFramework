@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.PersistenceTest", "EntityFramework.PersistenceTest\EntityFramework.PersistenceTest.csproj", "{163D1619-7C50-4961-966F-B63B2D51117B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleTest", "ExampleTest\ExampleTest.csproj", "{00F08410-9E20-4F11-A4E5-23A187908F97}"
@@ -14,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ketchup.EntityFramework", "Ketchup.EntityFramework\Ketchup.EntityFramework.csproj", "{163D1619-7C50-4961-966F-B63B2D51117B}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = EfPersistenceTests.vsmdi
@@ -23,10 +23,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{163D1619-7C50-4961-966F-B63B2D51117B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{163D1619-7C50-4961-966F-B63B2D51117B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{163D1619-7C50-4961-966F-B63B2D51117B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{163D1619-7C50-4961-966F-B63B2D51117B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +31,10 @@ Global
 		{00F08410-9E20-4F11-A4E5-23A187908F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F08410-9E20-4F11-A4E5-23A187908F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F08410-9E20-4F11-A4E5-23A187908F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{163D1619-7C50-4961-966F-B63B2D51117B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{163D1619-7C50-4961-966F-B63B2D51117B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{163D1619-7C50-4961-966F-B63B2D51117B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{163D1619-7C50-4961-966F-B63B2D51117B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

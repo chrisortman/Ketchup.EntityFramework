@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntityFramework.PersistenceTest {
+namespace Ketchup.EntityFramework.Testing {
 
 	/// <summary>
 	/// Methods needed to be implemented by consumer of library.

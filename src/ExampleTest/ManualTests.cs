@@ -4,8 +4,9 @@ using System.Data.Entity.Infrastructure;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using EntityFramework.PersistenceTest;
+using Ketchup.EntityFramework;
 using Example;
+using Ketchup.EntityFramework.Testing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ExampleTest {
@@ -31,7 +32,7 @@ namespace ExampleTest {
 
 
 	[TestClass]
-	public class AutomaticTest : PersistenceTest<ExampleContext> {
+	public class AutomacTest : PersistenceTest<ExampleContext> {
 		
 		[TestMethod]
 		public void Can_save_and_fetch_a_customer() {

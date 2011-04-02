@@ -73,13 +73,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EntityFramework.PersistenceTest\EntityFramework.PersistenceTest.csproj">
-      <Project>{163D1619-7C50-4961-966F-B63B2D51117B}</Project>
-      <Name>EntityFramework.PersistenceTest</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Example\Example.csproj">
       <Project>{4B343EA2-A4A3-43C7-8FFB-76FD97A41244}</Project>
       <Name>Example</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ketchup.EntityFramework\Ketchup.EntityFramework.csproj">
+      <Project>{163D1619-7C50-4961-966F-B63B2D51117B}</Project>
+      <Name>Ketchup.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

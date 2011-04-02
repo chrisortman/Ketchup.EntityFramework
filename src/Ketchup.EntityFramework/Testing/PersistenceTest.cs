@@ -4,15 +4,10 @@ using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace EntityFramework.PersistenceTest {
-	public interface ISetupEntityForTests<ENTITY> {
-		PersistenceCheck<ENTITY> Property<VALUE>(Expression<Func<ENTITY, VALUE>> accessor, VALUE value);
-	}
-
+namespace Ketchup.EntityFramework.Testing {
 	[TestClass]
 	public abstract class PersistenceTest<CONTEXT> where CONTEXT : DbContext {
 		public const string TESTDB_CONNECTION = "TestDb";

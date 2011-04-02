@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Reflection;
 
-namespace EntityFramework.PersistenceTest {
+namespace Ketchup.EntityFramework.Testing {
 	internal class PropertyPersistenceCheck {
 		private object _valueToCompare;
 
