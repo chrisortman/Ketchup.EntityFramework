@@ -1,20 +1,20 @@
-using System;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Validation;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Reflection;
-
 namespace Ketchup.EntityFramework.Testing {
+	using System;
+	using System.Data;
+	using System.Data.Entity;
+	using System.Data.Entity.Validation;
+	using System.Data.SqlClient;
+	using System.Linq;
+	using System.Reflection;
+
 	public abstract class PersistenceTest<CONTEXT> where CONTEXT : DbContext {
 		public const string TESTDB_CONNECTION = "TestDb";
 
 		private CONTEXT _efContext;
 
 		/// <summary>
-		/// Allows you to access the current
-		/// Entity Framework context.
+		///   Allows you to access the current
+		///   Entity Framework context.
 		/// </summary>
 		protected CONTEXT EfContext {
 			get { return _efContext; }
@@ -24,21 +24,21 @@ namespace Ketchup.EntityFramework.Testing {
 		//Have this so I can do begin trans / commit trans
 		//stuff if i need to
 		/// <summary>
-		/// Wraps all changes withing an EF context and automatically
-		/// pushes changes to the database afterward.
+		///   Wraps all changes withing an EF context and automatically
+		///   pushes changes to the database afterward.
 		/// </summary>
-		/// <param name="stuff"></param>
+		/// <param name = "stuff"></param>
 		/// <example>
-		/// <code>
-		/// UnitOfWork(context => 
-		/// {
+		///   <code>
+		///     UnitOfWork(context => 
+		///     {
 		///     var entity = new Customer();
 		///     entity.Name = "chris";
 		///     context.Customers.Add(entity);
-		/// });
-		/// </code>
+		///     });
+		///   </code>
 		/// </example>
-		/// <seealso cref="EfContext"/>
+		/// <seealso cref = "EfContext" />
 		protected void UnitOfWork(Action<CONTEXT> stuff) {
 			stuff(EfContext);
 			try {
@@ -70,26 +70,26 @@ The statement has been terminated.";
 		}
 
 		/// <summary>
-		/// Causes any changes in the current Entity Framework 
-		/// context to be sent to the database.
+		///   Causes any changes in the current Entity Framework 
+		///   context to be sent to the database.
 		/// </summary>
-		/// <seealso cref="DbContext.SaveChanges"/>
-		/// <seealso cref="CreateContext"/>
-		/// <seealso cref="EfContext" />
+		/// <seealso cref = "DbContext.SaveChanges" />
+		/// <seealso cref = "CreateContext" />
+		/// <seealso cref = "EfContext" />
 		protected void FlushChanges() {
 			EfContext.SaveChanges();
 		}
 
 		/// <summary>
-		/// Helper function for doing common persistence checking.
-		/// Will assign values to properties, send to database fetch back
-		/// and check that everything matches.
+		///   Helper function for doing common persistence checking.
+		///   Will assign values to properties, send to database fetch back
+		///   and check that everything matches.
 		/// </summary>
-		/// <typeparam name="ENTITY">Type of the entity object</typeparam>
-		/// <param name="configureEntity">Function that will setup properties on the entity</param>
+		/// <typeparam name = "ENTITY">Type of the entity object</typeparam>
+		/// <param name = "configureEntity">Function that will setup properties on the entity</param>
 		/// <example>
-		/// <code>
-		/// <![CDATA[
+		///   <code>
+		///     <![CDATA[
 		///  Check<WebServer>(c =>
 		/// {
 		///     c.Property(x => x.HostName, "Localhost")
@@ -98,7 +98,7 @@ The statement has been terminated.";
 		///         .Property(x => x.IisVersion,7);
 		/// });
 		/// ]]>
-		/// </code>
+		///   </code>
 		/// </example>
 		protected void Check<ENTITY>(Action<ISetupEntityForTests<ENTITY>> configureEntity) where ENTITY : class {
 			var checkerInstance = new PersistenceCheck<ENTITY>();
@@ -149,19 +149,19 @@ The statement has been terminated.";
 		}
 
 		/// <summary>
-		/// Allows you to create an Entity Framework context
-		/// for use in your tests.
+		///   Allows you to create an Entity Framework context
+		///   for use in your tests.
 		/// </summary>
 		/// <returns></returns>
 		/// <example>
-		/// <code>
-		/// using(var ctx = CreateContext())
-		/// {
+		///   <code>
+		///     using(var ctx = CreateContext())
+		///     {
 		///     var siteUrl = SiteUrl.CreateDefault("ebill",ctx.WebServers);
 		///     ctx.SiteUrls.Add(siteUrl);
 		///     ctx.SaveChanges();
-		/// }
-		/// </code>
+		///     }
+		///   </code>
 		/// </example>
 		protected CONTEXT CreateContext() {
 			return Activator.CreateInstance<CONTEXT>();

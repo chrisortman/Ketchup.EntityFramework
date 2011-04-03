@@ -1,10 +1,7 @@
+namespace Ketchup.EntityFramework.Migrations {
+	using System.Data;
 
-using System.Data;
-
-namespace Ketchup.EntityFramework.Migrations
-{
-	public interface IColumn
-	{
+	public interface IColumn {
 		ColumnProperty ColumnProperty { get; set; }
 
 		string Name { get; set; }

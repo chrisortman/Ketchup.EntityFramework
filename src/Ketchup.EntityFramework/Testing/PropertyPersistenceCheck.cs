@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data.Entity;
-using System.Reflection;
+﻿namespace Ketchup.EntityFramework.Testing {
+	using System;
+	using System.Data.Entity;
+	using System.Reflection;
 
-namespace Ketchup.EntityFramework.Testing {
 	internal class PropertyPersistenceCheck {
 		private object _valueToCompare;
 

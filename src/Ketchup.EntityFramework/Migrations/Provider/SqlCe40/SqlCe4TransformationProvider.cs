@@ -1,11 +1,10 @@
-using System;
-using System.Data;
-using System.Data.SqlServerCe;
-using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
-
 namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
-	public class SqlCe4TransformationProvider : SqlServerTransformationProvider {
+	using System;
+	using System.Data;
+	using System.Data.SqlServerCe;
+	using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
 
+	public class SqlCe4TransformationProvider : SqlServerTransformationProvider {
 		public SqlCe4TransformationProvider(string connectionString)
 			: base(new SqlCe4Dialect(), connectionString) {
 			CreateConnection();
@@ -125,14 +124,14 @@ namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
 		}
 
 		/// <summary>
-		/// Add a new column to an existing table.
+		///   Add a new column to an existing table.
 		/// </summary>
-		/// <param name="table">Table to which to add the column</param>
-		/// <param name="column">Column name</param>
-		/// <param name="type">Date type of the column</param>
-		/// <param name="size">Max length of the column</param>
-		/// <param name="property">Properties of the column, see <see cref="ColumnProperty">ColumnProperty</see>,</param>
-		/// <param name="defaultValue">Default value</param>
+		/// <param name = "table">Table to which to add the column</param>
+		/// <param name = "column">Column name</param>
+		/// <param name = "type">Date type of the column</param>
+		/// <param name = "size">Max length of the column</param>
+		/// <param name = "property">Properties of the column, see <see cref = "ColumnProperty">ColumnProperty</see>,</param>
+		/// <param name = "defaultValue">Default value</param>
 		public override void AddColumn(string table, string column, DbType type, int size, ColumnProperty property,
 		                               object defaultValue) {
 			table = CleanTableName(table);

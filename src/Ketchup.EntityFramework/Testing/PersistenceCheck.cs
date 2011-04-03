@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq.Expressions;
-using System.Reflection;
+﻿namespace Ketchup.EntityFramework.Testing {
+	using System;
+	using System.Collections.Generic;
+	using System.Data.Entity;
+	using System.Linq.Expressions;
+	using System.Reflection;
 
-namespace Ketchup.EntityFramework.Testing {
 	public class PersistenceCheck<ENTITY> : ISetupEntityForTests<ENTITY> {
 		private readonly List<PropertyPersistenceCheck> _infos = new List<PropertyPersistenceCheck>();
 
@@ -13,14 +13,14 @@ namespace Ketchup.EntityFramework.Testing {
 		}
 
 		/// <summary>
-		/// Set and verify a property round trip.
-		/// This overload allows the expected property to be different
-		/// than the inserted proeprty...this is useful for passwords.
+		///   Set and verify a property round trip.
+		///   This overload allows the expected property to be different
+		///   than the inserted proeprty...this is useful for passwords.
 		/// </summary>
-		/// <typeparam name="VALUE">The type of the ALUE.</typeparam>
-		/// <param name="accessor">The accessor.</param>
-		/// <param name="valueIn">The value in.</param>
-		/// <param name="valueOut">The value out.</param>
+		/// <typeparam name = "VALUE">The type of the ALUE.</typeparam>
+		/// <param name = "accessor">The accessor.</param>
+		/// <param name = "valueIn">The value in.</param>
+		/// <param name = "valueOut">The value out.</param>
 		/// <returns></returns>
 		public PersistenceCheck<ENTITY> Property<VALUE>(Expression<Func<ENTITY, VALUE>> accessor, VALUE valueIn,
 		                                                VALUE valueOut) {

@@ -1,32 +1,27 @@
+namespace Ketchup.EntityFramework.Migrations.Runner {
+	using System;
+	using System.Collections.Generic;
 
-using System;
-using System.Collections.Generic;
-
-namespace Ketchup.EntityFramework.Migrations.Runner
-{
 	/// <summary>
-	/// Comparer of Migration by their version attribute.
+	///   Comparer of Migration by their version attribute.
 	/// </summary>
-	public class MigrationTypeComparer : IComparer<Type>
-	{
+	public class MigrationTypeComparer : IComparer<Type> {
 		private readonly bool _ascending = true;
-		
-		public MigrationTypeComparer(bool ascending)
-		{
+
+		public MigrationTypeComparer(bool ascending) {
 			_ascending = ascending;
 		}
 
-        public int Compare(Type x, Type y)
-		{
-			MigrationAttribute attribOfX = (MigrationAttribute) Attribute.GetCustomAttribute(x, typeof(MigrationAttribute));
-			MigrationAttribute attribOfY = (MigrationAttribute) Attribute.GetCustomAttribute(y, typeof(MigrationAttribute));
-			
-			if (_ascending)
+		public int Compare(Type x, Type y) {
+			MigrationAttribute attribOfX = (MigrationAttribute) Attribute.GetCustomAttribute(x, typeof (MigrationAttribute));
+			MigrationAttribute attribOfY = (MigrationAttribute) Attribute.GetCustomAttribute(y, typeof (MigrationAttribute));
+
+			if (_ascending) {
 				return attribOfX.Version.CompareTo(attribOfY.Version);
-			else
+			}
+			else {
 				return attribOfY.Version.CompareTo(attribOfX.Version);
-			
-			
+			}
 		}
 	}
 }

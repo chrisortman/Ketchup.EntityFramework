@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿namespace Ketchup.EntityFramework.Testing {
+	using System;
+	using System.Collections;
+	using System.Collections.Generic;
+	using System.Linq;
 
-namespace Ketchup.EntityFramework.Testing {
 	internal class CollectionPropertyPersistenceCheck<COLLECTION_TYPE> : PropertyPersistenceCheck {
 		public override void Compare(object entity, Action<string> onFail) {
 			var entityValue = Property.GetValue(entity, null);

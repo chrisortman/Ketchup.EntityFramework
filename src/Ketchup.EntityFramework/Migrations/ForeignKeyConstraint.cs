@@ -1,7 +1,5 @@
-namespace Ketchup.EntityFramework.Migrations
-{
-	public enum ForeignKeyConstraint
-	{
+namespace Ketchup.EntityFramework.Migrations {
+	public enum ForeignKeyConstraint {
 		Cascade,
 		SetNull,
 		NoAction,

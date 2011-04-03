@@ -1,16 +1,12 @@
-using System;
+namespace Ketchup.EntityFramework.Migrations.Loggers {
+	using System;
 
-namespace Ketchup.EntityFramework.Migrations.Loggers
-{
-	public class ConsoleWriter : ILogWriter
-	{
-		public void Write(string message, params object[] args)
-		{
+	public class ConsoleWriter : ILogWriter {
+		public void Write(string message, params object[] args) {
 			Console.Write(message, args);
 		}
 
-		public void WriteLine(string message, params object[] args)
-		{
+		public void WriteLine(string message, params object[] args) {
 			Console.WriteLine(message, args);
 		}
 	}

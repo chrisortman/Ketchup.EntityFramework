@@ -1,21 +1,17 @@
-namespace Ketchup.EntityFramework.Migrations.Provider
-{
-	public class ForeignKeyConstraintMapper
-	{
-		public string SqlForConstraint(ForeignKeyConstraint constraint)
-		{
-			switch(constraint)
-			{
+namespace Ketchup.EntityFramework.Migrations.Provider {
+	public class ForeignKeyConstraintMapper {
+		public string SqlForConstraint(ForeignKeyConstraint constraint) {
+			switch (constraint) {
 				case ForeignKeyConstraint.Cascade:
-                    return "CASCADE";
+					return "CASCADE";
 				case ForeignKeyConstraint.Restrict:
-                    return "RESTRICT";
+					return "RESTRICT";
 				case ForeignKeyConstraint.SetDefault:
-                    return "SET DEFAULT";
+					return "SET DEFAULT";
 				case ForeignKeyConstraint.SetNull:
-                    return "SET NULL";
+					return "SET NULL";
 				default:
-                    return "NO ACTION";
+					return "NO ACTION";
 			}
 		}
 	}

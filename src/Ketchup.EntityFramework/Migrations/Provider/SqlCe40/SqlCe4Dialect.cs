@@ -1,12 +1,9 @@
-﻿using System.Data;
-using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
+﻿namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
+	using System.Data;
+	using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
 
-namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
-	public class SqlCe4Dialect : SqlServer2005Dialect
-	{
-		public SqlCe4Dialect()
-		{
-            
+	public class SqlCe4Dialect : SqlServer2005Dialect {
+		public SqlCe4Dialect() {
 			RegisterColumnType(DbType.AnsiStringFixedLength, "NCHAR(255)");
 			RegisterColumnType(DbType.AnsiStringFixedLength, 8000, "NCHAR($l)");
 			RegisterColumnType(DbType.AnsiString, "NVARCHAR(255)");
@@ -34,28 +31,23 @@ namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
 			//RegisterColumnType(DbType.String, 4000, "NVARCHAR($l)");
 			//RegisterColumnType(DbType.String, 1073741823, "NTEXT");
 			//RegisterColumnType(DbType.Time, "DATETIME");
-            
 		}
 
-		public override bool TableNameNeedsQuote
-		{
+		public override bool TableNameNeedsQuote {
 			get { return true; }
 		}
 
-		public override string Quote(string value)
-		{
-			if(value.StartsWith("[") == false)
-			{
+		public override string Quote(string value) {
+			if (value.StartsWith("[") == false) {
 				return "[" + value + "]";
 			}
-			else if(value.StartsWith("[dbo].")) //schema qualified
+			else if (value.StartsWith("[dbo].")) //schema qualified
 			{
 				//must strip schema
 				var parts = value.Split('.');
 				return "[" + parts[1] + "]";
 			}
-			else
-			{
+			else {
 				return value;
 			}
 		}

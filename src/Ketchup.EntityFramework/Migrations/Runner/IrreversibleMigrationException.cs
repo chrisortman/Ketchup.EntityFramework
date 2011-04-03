@@ -1,16 +1,11 @@
+namespace Ketchup.EntityFramework.Migrations.Runner {
+	using System;
 
-using System;
-
-namespace Ketchup.EntityFramework.Migrations.Runner
-{
 	/// <summary>
-	/// Exception thrown in a migration <c>Down()</c> method
-	/// when changes can't be undone.
+	///   Exception thrown in a migration <c>Down()</c> method
+	///   when changes can't be undone.
 	/// </summary>
-	public class IrreversibleMigrationException : Exception
-	{
-		public IrreversibleMigrationException() : base("Irreversible migration")
-		{
-		}
+	public class IrreversibleMigrationException : Exception {
+		public IrreversibleMigrationException() : base("Irreversible migration") {}
 	}
 }

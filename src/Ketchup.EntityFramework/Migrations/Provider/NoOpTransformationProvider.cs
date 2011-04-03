@@ -1,329 +1,264 @@
-using System.Data;
-using System.Collections.Generic;
+namespace Ketchup.EntityFramework.Migrations.Provider {
+	using System.Collections.Generic;
+	using System.Data;
+	using ForeignKeyConstraint = Ketchup.EntityFramework.Migrations.ForeignKeyConstraint;
 
-namespace Ketchup.EntityFramework.Migrations.Provider
-{
-    /// <summary>
-    /// No Op (Null Object Pattern) implementation of the ITransformationProvider
-    /// </summary>
-    public class NoOpTransformationProvider : ITransformationProvider
-    {
-        
-        public static readonly NoOpTransformationProvider Instance = new NoOpTransformationProvider();
-        
-        private NoOpTransformationProvider()
-        {
+	/// <summary>
+	///   No Op (Null Object Pattern) implementation of the ITransformationProvider
+	/// </summary>
+	public class NoOpTransformationProvider : ITransformationProvider {
+		public static readonly NoOpTransformationProvider Instance = new NoOpTransformationProvider();
 
-        }
+		private NoOpTransformationProvider() {}
 
-        public virtual ILogger Logger
-        {
-            get { return null; }
-            set { }
-        }
-        
-        public Dialect Dialect
-        {
-            get { return null; }
-        }
+		public virtual ILogger Logger {
+			get { return null; }
+			set { }
+		}
 
-        public string[] GetTables()
-        {
-            return null;
-        }
+		public Dialect Dialect {
+			get { return null; }
+		}
 
-        public Column[] GetColumns(string table)
-        {
-            return null;
-        }
+		public string[] GetTables() {
+			return null;
+		}
 
-        public Column GetColumnByName(string table, string column)
-        {
-            return null;
-        }
-        
-        public void RemoveForeignKey(string table, string name)
-        {
-            // No Op
-        }
-        
-        public void RemoveConstraint(string table, string name) 
-        {
-            // No Op
-        }
-        
-        public void AddTable(string name, params Column[] columns)
-        {
-            // No Op
-        }
+		public Column[] GetColumns(string table) {
+			return null;
+		}
 
-        public void AddTable(string name, string engine, params Column[] columns)
-        {
-            // No Op
-        }
+		public Column GetColumnByName(string table, string column) {
+			return null;
+		}
 
-        public void RemoveTable(string name)
-        {
-            // No Op
-        }
-        
-        public void RenameTable(string oldName, string newName)
-        {
-            // No Op
-        }
-        
-        public void RenameColumn(string tableName, string oldColumnName, string newColumnName)
-        {
-            // No Op
-        }
+		public void RemoveForeignKey(string table, string name) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string sqlColumn)
-        {
-            // No Op
-        }
+		public void RemoveConstraint(string table, string name) {
+			// No Op
+		}
 
-        public void RemoveColumn(string table, string column)
-        {
-            // No Op
-        }
+		public void AddTable(string name, params Column[] columns) {
+			// No Op
+		}
 
-        public bool ColumnExists(string table, string column)
-        {
-            return false;
-        }
+		public void AddTable(string name, string engine, params Column[] columns) {
+			// No Op
+		}
 
-        public bool TableExists(string table)
-        {
-            return false;
-        }
+		public void RemoveTable(string name) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string column, DbType type, int size, ColumnProperty property, object defaultValue)
-        {
-            // No Op
-        }
+		public void RenameTable(string oldName, string newName) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string column, DbType type)
-        {
-            // No Op
-        }
+		public void RenameColumn(string tableName, string oldColumnName, string newColumnName) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string column, DbType type, object defaultValue)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string sqlColumn) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string column, DbType type, int size)
-        {
-            // No Op
-        }
+		public void RemoveColumn(string table, string column) {
+			// No Op
+		}
 
-        public void AddColumn(string table, string column, DbType type, ColumnProperty property)
-        {
-            // No Op
-        }
+		public bool ColumnExists(string table, string column) {
+			return false;
+		}
 
-        public void AddColumn(string table, string column, DbType type, int size, ColumnProperty property)
-        {
-            // No Op
-        }
+		public bool TableExists(string table) {
+			return false;
+		}
 
-        public void AddPrimaryKey(string name, string table, params string[] columns)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type, int size, ColumnProperty property, object defaultValue) {
+			// No Op
+		}
 
-        public void GenerateForeignKey(string primaryTable, string primaryColumn, string refTable, string refColumn)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type) {
+			// No Op
+		}
 
-        public void GenerateForeignKey(string primaryTable, string[] primaryColumns, string refTable, string[] refColumns)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type, object defaultValue) {
+			// No Op
+		}
 
-        public void GenerateForeignKey(string primaryTable, string primaryColumn, string refTable, string refColumn, ForeignKeyConstraint constraint)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type, int size) {
+			// No Op
+		}
 
-        public void GenerateForeignKey(string primaryTable, string[] primaryColumns, string refTable,
-                                               string[] refColumns, ForeignKeyConstraint constraint)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type, ColumnProperty property) {
+			// No Op
+		}
 
-        public void AddForeignKey(string name, string primaryTable, string primaryColumn, string refTable,
-                                          string refColumn)
-        {
-            // No Op
-        }
+		public void AddColumn(string table, string column, DbType type, int size, ColumnProperty property) {
+			// No Op
+		}
 
-        public void AddForeignKey(string name, string primaryTable, string[] primaryColumns, string refTable, string[] refColumns)
-        {
-            // No Op
-        }
+		public void AddPrimaryKey(string name, string table, params string[] columns) {
+			// No Op
+		}
 
-        public void AddForeignKey(string name, string primaryTable, string primaryColumn, string refTable, string refColumn, ForeignKeyConstraint constraint)
-        {
-            // No Op
-        }
+		public void GenerateForeignKey(string primaryTable, string primaryColumn, string refTable, string refColumn) {
+			// No Op
+		}
 
-        public void AddForeignKey(string name, string primaryTable, string[] primaryColumns, string refTable,
-                                          string[] refColumns, ForeignKeyConstraint constraint)
-        {
-           // No Op
-        }
-        
-        public void AddUniqueConstraint(string name, string table, params string[] columns)
-        {
-            // No Op
-        }
+		public void GenerateForeignKey(string primaryTable, string[] primaryColumns, string refTable, string[] refColumns) {
+			// No Op
+		}
 
-        public void AddCheckConstraint(string name, string table, string checkSql)
-        {
-            // No Op
-        }
+		public void GenerateForeignKey(string primaryTable, string primaryColumn, string refTable, string refColumn,
+		                               ForeignKeyConstraint constraint) {
+			// No Op
+		}
 
-        public bool ConstraintExists(string table, string name)
-        {
-            return false;
-        }
-        
-        public void ChangeColumn(string table, Column column)
-        {
-            // No Op
-        }
-        
-        
-        public bool PrimaryKeyExists(string table, string name)
-        {
-            return false;
-        }
+		public void GenerateForeignKey(string primaryTable, string[] primaryColumns, string refTable,
+		                               string[] refColumns, ForeignKeyConstraint constraint) {
+			// No Op
+		}
 
-        public int ExecuteNonQuery(string sql)
-        {
-            return 0;
-        }
+		public void AddForeignKey(string name, string primaryTable, string primaryColumn, string refTable,
+		                          string refColumn) {
+			// No Op
+		}
 
-        public IDataReader ExecuteQuery(string sql)
-        {
-            return null;
-        }
+		public void AddForeignKey(string name, string primaryTable, string[] primaryColumns, string refTable,
+		                          string[] refColumns) {
+			// No Op
+		}
 
-        public object ExecuteScalar(string sql)
-        {
-            return null;
-        }
+		public void AddForeignKey(string name, string primaryTable, string primaryColumn, string refTable, string refColumn,
+		                          ForeignKeyConstraint constraint) {
+			// No Op
+		}
 
-        public IDataReader Select(string what, string from)
-        {
-            return null;
-        }
+		public void AddForeignKey(string name, string primaryTable, string[] primaryColumns, string refTable,
+		                          string[] refColumns, ForeignKeyConstraint constraint) {
+			// No Op
+		}
 
-        public IDataReader Select(string what, string from, string where)
-        {
-            return null;
-        }
+		public void AddUniqueConstraint(string name, string table, params string[] columns) {
+			// No Op
+		}
 
-        public object SelectScalar(string what, string from)
-        {
-            return null;
-        }
+		public void AddCheckConstraint(string name, string table, string checkSql) {
+			// No Op
+		}
 
-        public object SelectScalar(string what, string from, string where)
-        {
-            return null;
-        }
-        
-        public int Update(string table, string[] columns, string[] columnValues) 
-        {
-            return 0;
-        }
-        
-        public int Update(string table, string[] columns, string[] columnValues, string where) 
-        {
-            return 0;
-        }
+		public bool ConstraintExists(string table, string name) {
+			return false;
+		}
 
-        public int Insert(string table, string[] columns, string[] columnValues)
-        {
-            return 0;
-        }
+		public void ChangeColumn(string table, Column column) {
+			// No Op
+		}
 
-        public int Delete(string table, string[] columns, string[] columnValues)
-        {
-            return 0;
-        }
 
-        public int Delete(string table, string column, string value)
-        {
-            return 0;
-        }
+		public bool PrimaryKeyExists(string table, string name) {
+			return false;
+		}
 
-        public void BeginTransaction()
-        {
-            // No Op
-        }
+		public int ExecuteNonQuery(string sql) {
+			return 0;
+		}
 
-        public void Rollback()
-        {
-            // No Op
-        }
+		public IDataReader ExecuteQuery(string sql) {
+			return null;
+		}
 
-        public void Commit()
-        {
-            // No Op
-        }
+		public object ExecuteScalar(string sql) {
+			return null;
+		}
 
-        public ITransformationProvider this[string provider]
-        {
-            get { return this; }
-        }
+		public IDataReader Select(string what, string from) {
+			return null;
+		}
 
-        public void MigrationApplied(long version)
-        {
-        	//no op
-        }
+		public IDataReader Select(string what, string from, string where) {
+			return null;
+		}
 
-        public void MigrationUnApplied(long version)
-        {
-        	//no op
-        }
-        
-        public List<long> AppliedMigrations
-        {
-        	get { return new List<long>(); }
-        }
+		public object SelectScalar(string what, string from) {
+			return null;
+		}
 
-        protected void CreateSchemaInfoTable()
-        {
- 
-        }
+		public object SelectScalar(string what, string from, string where) {
+			return null;
+		}
 
-        public void AddColumn(string table, Column column)
-        {
-            // No Op
-        }
+		public int Update(string table, string[] columns, string[] columnValues) {
+			return 0;
+		}
 
-        public void GenerateForeignKey(string primaryTable, string refTable)
-        {
-            // No Op
-        }
+		public int Update(string table, string[] columns, string[] columnValues, string where) {
+			return 0;
+		}
 
-        public void GenerateForeignKey(string primaryTable, string refTable, ForeignKeyConstraint constraint)
-        {
-            // No Op
-        }
+		public int Insert(string table, string[] columns, string[] columnValues) {
+			return 0;
+		}
 
-        public IDbCommand GetCommand()
-        {
-            return null;
-        }
+		public int Delete(string table, string[] columns, string[] columnValues) {
+			return 0;
+		}
 
-        public void Dispose()
-        {
-            //No Op
-        }
-    }
+		public int Delete(string table, string column, string value) {
+			return 0;
+		}
+
+		public void BeginTransaction() {
+			// No Op
+		}
+
+		public void Rollback() {
+			// No Op
+		}
+
+		public void Commit() {
+			// No Op
+		}
+
+		public ITransformationProvider this[string provider] {
+			get { return this; }
+		}
+
+		public void MigrationApplied(long version) {
+			//no op
+		}
+
+		public void MigrationUnApplied(long version) {
+			//no op
+		}
+
+		public List<long> AppliedMigrations {
+			get { return new List<long>(); }
+		}
+
+		protected void CreateSchemaInfoTable() {}
+
+		public void AddColumn(string table, Column column) {
+			// No Op
+		}
+
+		public void GenerateForeignKey(string primaryTable, string refTable) {
+			// No Op
+		}
+
+		public void GenerateForeignKey(string primaryTable, string refTable, ForeignKeyConstraint constraint) {
+			// No Op
+		}
+
+		public IDbCommand GetCommand() {
+			return null;
+		}
+
+		public void Dispose() {
+			//No Op
+		}
+	}
 }
