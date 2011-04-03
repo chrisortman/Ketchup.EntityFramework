@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.Collections.Generic;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {   
     /// <summary>
     /// The main interface to use in Migrations to make changes on a database schema.

@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using Migrator.Providers.SqlServer;
+using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
 
 namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
 	public class SqlCe4Dialect : SqlServer2005Dialect

@@ -1,9 +1,7 @@
-
 using System;
 using System.Data;
-using Migrator.Framework;
 
-namespace Migrator.Providers.SqlServer
+namespace Ketchup.EntityFramework.Migrations.Provider.SqlServer
 {
 	public class SqlServerDialect : Dialect
 	{

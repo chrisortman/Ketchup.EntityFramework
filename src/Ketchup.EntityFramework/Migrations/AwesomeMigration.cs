@@ -1,8 +1,7 @@
 ﻿using System;
-using InnovativeSystems.OSS.WebDBU.Builders;
-using Migrator.Framework;
+using Ketchup.EntityFramework.Migrations.Builders;
 
-namespace WebDBU
+namespace Ketchup.EntityFramework.Migrations
 {
     public abstract class AwesomeMigration : Migration
     {

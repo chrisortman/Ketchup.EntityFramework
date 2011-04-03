@@ -8,24 +8,17 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Migrator.Framework;
-using Migrator.Framework.Loggers;
-using Migrator.Providers.SqlCe40;
-using Migrator.Providers.SqlServer;
+using Ketchup.EntityFramework.Migrations;
+using Ketchup.EntityFramework.Migrations.Loggers;
+using Ketchup.EntityFramework.Migrations.Provider.SqlCe40;
+using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
+using Ketchup.EntityFramework.Migrations.Runner;
 
 namespace MigratorGui {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
 	/// </summary>
-	public partial class MainWindow : Window {
+	public partial class MainWindow : Window, ILogWriter {
 		private IDbConnection _connection;
 		private Assembly _migrationAssembly;
 
@@ -57,11 +50,16 @@ namespace MigratorGui {
 
 		private void DisplaySchemaVersion() {
 			var command = _connection.CreateCommand();
-			command.CommandText = "select max(version) from dbo.SchemaInfo";
+			command.CommandText = "select max(version) from SchemaInfo";
 
 			int version = 0;
 			try {
-				version = Convert.ToInt32(command.ExecuteScalar());
+				var versionColumnValue = command.ExecuteScalar();
+				if(Convert.IsDBNull(versionColumnValue)) {
+					version = 0;
+				} else {
+					version = Convert.ToInt32(versionColumnValue);
+				}
 			}
 			catch (SqlException noSchemaInfoTable) {
 				version = 0;
@@ -105,7 +103,7 @@ namespace MigratorGui {
 		protected void DiscoverMigrations(object sender, RoutedEventArgs e) {
 			var catalog = new DirectoryCatalog(AppDomain.CurrentDomain.BaseDirectory);
 			var container = new CompositionContainer(catalog);
-			var migrations = container.GetExports<Migration, IMigrationCapabilities>();
+			var migrations = container.GetExports<IMigration, IMigrationCapabilities>();
 			var assembliesWithMigrations = (from m in migrations
 			                                select m.Value.GetType().Assembly).Distinct();
 
@@ -117,40 +115,47 @@ namespace MigratorGui {
 			}
 		}
 
-		private Migrator.Migrator GetMigrator() {
+		private Ketchup.EntityFramework.Migrations.Runner.Migrator GetMigrator() {
 			if (_connection is SqlConnection) {
-				return new Migrator.Migrator(
+				return new Ketchup.EntityFramework.Migrations.Runner.Migrator(
 					new SqlServerTransformationProvider(new SqlServer2005Dialect(), _connection.ConnectionString),
 					_migrationAssembly,
 					true,
-					new Logger(true));
+					new Logger(true,this));
 			}
 			else {
-				return new Migrator.Migrator(
-					new SqlCe4TransformationProvider(() => _connection, _connection.ConnectionString),
+				return new Ketchup.EntityFramework.Migrations.Runner.Migrator(
+					new SqlCe4TransformationProvider(_connection.ConnectionString),
 					migrationAssembly: _migrationAssembly,
 					trace: true,
-					logger: new Logger(true)
+					logger: new Logger(true,this)
 					);
 			}
 		}
 
 		private void MigrateToLatest(object sender, RoutedEventArgs e) {
-			Migrator.Migrator migrator = GetMigrator();
+			Ketchup.EntityFramework.Migrations.Runner.Migrator migrator = GetMigrator();
 
 
 			migrator.MigrateToLastVersion();
-			VersionField.Text = Convert.ToInt32(migrator.AppliedMigrations.Max()).ToString();
+			SetVersionToLastAppliedMigration(migrator);
 		}
 
 		private void MigrateDownOne(object sender, RoutedEventArgs e) {
 			var migrator = GetMigrator();
-			var previous = (from migration in migrator.AppliedMigrations
-			                orderby migration descending
-			                select migration).Skip(1).First();
+			long previousMigrationNumber = 0;
+			var previous = from migration in migrator.AppliedMigrations
+			               orderby migration descending
+			               select migration;
+			if(previous.Count() <= 1) {
+				previousMigrationNumber = 0;
+			} else {
+				previousMigrationNumber = previous.Skip(1).First();
+			}
 
-			migrator.MigrateTo(previous);
-			VersionField.Text = Convert.ToInt32(migrator.AppliedMigrations.Max()).ToString();
+
+			migrator.MigrateTo(previousMigrationNumber);
+			SetVersionToLastAppliedMigration(migrator);
 		}
 
 		private void MigrateUpOne(object sender, RoutedEventArgs e) {
@@ -160,17 +165,32 @@ namespace MigratorGui {
 			                select migration).First();
 
 			migrator.MigrateTo(current+1);
-			VersionField.Text = Convert.ToInt32(migrator.AppliedMigrations.Max()).ToString();
+			SetVersionToLastAppliedMigration(migrator);
+		}
+
+		private void SetVersionToLastAppliedMigration(Migrator migrator) {
+			if(migrator.AppliedMigrations.Count > 0) {
+				VersionField.Text = Convert.ToInt32(migrator.AppliedMigrations.Max()).ToString();
+			} else {
+				VersionField.Text = "0";
+			}
 		}
 
 		private void MigrateTo(object sender, RoutedEventArgs e) {
 			var migrator = GetMigrator();
 
 			migrator.MigrateTo(Convert.ToInt64(MigrateToField.Text));
-			VersionField.Text = Convert.ToInt32(migrator.AppliedMigrations.Max()).ToString();
+			SetVersionToLastAppliedMigration(migrator);
 		}
 
 		#endregion
 
+		public void Write(string message, params object[] args) {
+			ConsoleMessagesField.Text += String.Format(message, args);
+		}
+
+		public void WriteLine(string message, params object[] args) {
+			AddMessage(String.Format(message,args));
+		}
 	}
 }

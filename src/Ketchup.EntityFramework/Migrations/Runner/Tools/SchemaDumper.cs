@@ -10,9 +10,8 @@
 #endregion
 
 using System.IO;
-using Migrator.Framework;
 
-namespace Migrator.Tools
+namespace Ketchup.EntityFramework.Migrations.Runner.Tools
 {
 	public class SchemaDumper
 	{

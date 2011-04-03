@@ -14,11 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Migrator.Framework;
-using ForeignKeyConstraint = Migrator.Framework.ForeignKeyConstraint;
-using Migrator.Framework.Loggers;
+using Ketchup.EntityFramework.Migrations.Loggers;
 
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
 	/// <summary>
 	/// Base class for every transformation providers.

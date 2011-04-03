@@ -11,9 +11,8 @@
 
 using System;
 using System.Collections.Generic;
-using Migrator.Framework;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
 	/// <summary>
 	/// Comparer of Migration by their version attribute.

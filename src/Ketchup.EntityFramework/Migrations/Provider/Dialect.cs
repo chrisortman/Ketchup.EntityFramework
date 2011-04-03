@@ -1,10 +1,8 @@
-
 using System;
 using System.Data;
 using System.Collections.Generic;
-using Migrator.Framework;
 
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
     /// <summary>
     /// Defines the implementations specific details for a particular database.

@@ -1,9 +1,7 @@
 using System.Data;
-using Migrator.Framework;
-using ForeignKeyConstraint=Migrator.Framework.ForeignKeyConstraint;
 using System.Collections.Generic;
 
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
     /// <summary>
     /// No Op (Null Object Pattern) implementation of the ITransformationProvider

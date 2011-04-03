@@ -11,7 +11,7 @@
 
 using System;
 
-namespace Migrator.Framework.Loggers
+namespace Ketchup.EntityFramework.Migrations.Loggers
 {
 	public class ConsoleWriter : ILogWriter
 	{

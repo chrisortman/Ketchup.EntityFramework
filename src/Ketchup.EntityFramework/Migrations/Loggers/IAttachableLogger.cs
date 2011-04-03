@@ -9,7 +9,7 @@
 //under the License.
 #endregion
 
-namespace Migrator.Framework.Loggers
+namespace Ketchup.EntityFramework.Migrations.Loggers
 {
 	/// <summary>
 	/// ILogger interface. 

@@ -11,10 +11,9 @@
 
 #endregion
 
-using System;
 using System.Data;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
     /// <summary>
     /// Represents a table column.

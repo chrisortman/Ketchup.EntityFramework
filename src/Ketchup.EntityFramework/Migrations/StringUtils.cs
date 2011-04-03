@@ -1,7 +1,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
     public class StringUtils
     {

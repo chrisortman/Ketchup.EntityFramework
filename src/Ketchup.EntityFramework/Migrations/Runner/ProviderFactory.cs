@@ -14,10 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Migrator.Framework;
-using Migrator.Providers;
+using Ketchup.EntityFramework.Migrations.Provider;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
     /// <summary>
     /// Handles loading Provider implementations

@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Migrator.Framework.Loggers
+namespace Ketchup.EntityFramework.Migrations.Loggers
 {
     public class SqlScriptFileLogger : ILogger, IDisposable
     {

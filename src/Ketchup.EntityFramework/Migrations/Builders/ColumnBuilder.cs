@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
-using Migrator.Framework;
 
-namespace InnovativeSystems.OSS.WebDBU.Builders
+namespace Ketchup.EntityFramework.Migrations.Builders
 {
     /// <summary>
     /// Used to construct database columns

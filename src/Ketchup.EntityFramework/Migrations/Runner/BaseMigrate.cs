@@ -1,7 +1,6 @@
-using Migrator.Framework;
 using System.Collections.Generic;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
     public abstract class BaseMigrate
     {

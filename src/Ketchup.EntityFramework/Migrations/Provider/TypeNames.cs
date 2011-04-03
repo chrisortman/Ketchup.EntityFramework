@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Migrator.Framework;
 
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
     /// <summary>
     /// This class maps a DbType to names.

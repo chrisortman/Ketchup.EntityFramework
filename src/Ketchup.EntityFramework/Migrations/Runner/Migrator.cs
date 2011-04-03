@@ -14,10 +14,9 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Migrator.Framework;
-using Migrator.Framework.Loggers;
+using Ketchup.EntityFramework.Migrations.Loggers;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
     /// <summary>
     /// Migrations mediator.

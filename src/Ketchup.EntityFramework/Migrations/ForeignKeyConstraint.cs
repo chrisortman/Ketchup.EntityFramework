@@ -1,4 +1,4 @@
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
 	public enum ForeignKeyConstraint
 	{

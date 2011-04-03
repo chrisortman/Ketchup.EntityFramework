@@ -12,7 +12,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Migrator.Framework.Loggers
+namespace Ketchup.EntityFramework.Migrations.Loggers
 {
 	/// <summary>
 	/// Text logger for the migration mediator

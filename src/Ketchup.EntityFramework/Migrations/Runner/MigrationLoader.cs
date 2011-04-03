@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Migrator.Framework;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
     /// <summary>
     /// Handles inspecting code to find all of the Migrations in assemblies and reading

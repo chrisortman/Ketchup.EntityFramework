@@ -11,7 +11,7 @@
 
 using System;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
 	/// <summary>
 	/// Exception thrown when a migration number is not unique.

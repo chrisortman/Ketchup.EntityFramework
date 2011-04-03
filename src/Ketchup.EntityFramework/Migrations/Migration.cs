@@ -11,7 +11,7 @@
 
 #endregion
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
     /// <summary>
     /// A migration is a group of transformation applied to the database schema

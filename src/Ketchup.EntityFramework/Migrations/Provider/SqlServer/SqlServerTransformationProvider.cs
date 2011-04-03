@@ -15,9 +15,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using Migrator.Framework;
 
-namespace Migrator.Providers.SqlServer
+namespace Ketchup.EntityFramework.Migrations.Provider.SqlServer
 {
     /// <summary>
     /// Migration transformations provider for Microsoft SQL Server.

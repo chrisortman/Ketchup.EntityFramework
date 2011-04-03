@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using Migrator.Providers;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
     public interface ISchemaInfoProvider
     {

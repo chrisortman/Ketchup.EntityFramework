@@ -1,6 +1,6 @@
 using System;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {    
     
     /// <summary>

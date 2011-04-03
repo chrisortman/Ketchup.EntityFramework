@@ -18,10 +18,10 @@
     	</DockPanel>
     	<StackPanel HorizontalAlignment="Left" Margin="0" Grid.Row="1" Orientation="Horizontal">
     		<TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Version"/>
-    		<TextBlock x:Name="VersionField" TextWrapping="Wrap" Text="1" VerticalAlignment="Center" Margin="5,0"/>
+    		<TextBlock x:Name="VersionField" TextWrapping="Wrap" VerticalAlignment="Center" Margin="5,0"/>
     		<Button Content="Migrate Latest" VerticalAlignment="Center" HorizontalAlignment="Center" Click="MigrateToLatest"/>
     		<Button Content="Migrate Down" Width="98" VerticalAlignment="Center" Margin="5" Click="MigrateDownOne"/>
-    		<Button Content="Migrate Up" Width="75" VerticalAlignment="Center" Margin="5" Click="MigrateUpOne"/>
+    		<Button Content="Migrate Up" Width="75" VerticalAlignment="Center" Margin="5" Click="MigrateUpOne" IsEnabled="False" ToolTip="Buggy, to lazy to fix right now, just use migrate to"/>
     		<TextBox x:Name="MigrateToField" TextWrapping="Wrap" VerticalAlignment="Center" MinWidth="30" />
     		<Button Content="Migrate To" Width="75" VerticalAlignment="Center" Margin="5" Click="MigrateTo"/>
     	</StackPanel>

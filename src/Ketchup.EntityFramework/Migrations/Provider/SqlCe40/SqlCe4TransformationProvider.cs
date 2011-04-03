@@ -1,16 +1,13 @@
 using System;
 using System.Data;
-using Ketchup.EntityFramework.Migrations.Provider.SqlCe40;
-using Migrator.Framework;
-using Migrator.Providers.SqlServer;
+using System.Data.SqlServerCe;
+using Ketchup.EntityFramework.Migrations.Provider.SqlServer;
 
-namespace Migrator.Providers.SqlCe40 {
+namespace Ketchup.EntityFramework.Migrations.Provider.SqlCe40 {
 	public class SqlCe4TransformationProvider : SqlServerTransformationProvider {
-		private Func<IDbConnection> _connectionFactory;
 
-		public SqlCe4TransformationProvider(Func<IDbConnection> connectionFactory, string connectionString)
+		public SqlCe4TransformationProvider(string connectionString)
 			: base(new SqlCe4Dialect(), connectionString) {
-			_connectionFactory = connectionFactory;
 			CreateConnection();
 			CloseConnectionOnCommit = true;
 		}
@@ -21,11 +18,7 @@ namespace Migrator.Providers.SqlCe40 {
 			//_connectionFactory so we just exit and then
 			//this will get recalled from our ctor
 
-			if (_connectionFactory == null) {
-				return;
-			}
-			_connection = _connectionFactory();
-			_connection.ConnectionString = _connectionString;
+			_connection = new SqlCeConnection(_connectionString);
 			_connection.Open();
 		}
 

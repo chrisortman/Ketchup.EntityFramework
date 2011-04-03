@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Migrator.Framework;
 
-namespace Migrator
+namespace Ketchup.EntityFramework.Migrations.Runner
 {
     /// <summary>
     /// Description of MigrateAnywhere.

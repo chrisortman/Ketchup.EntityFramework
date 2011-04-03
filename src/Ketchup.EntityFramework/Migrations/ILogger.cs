@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
 	public interface ILogger
 	{

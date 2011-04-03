@@ -1,8 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Migrator.Framework;
 
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
     /// <summary>
     /// This is basically a just a helper base class

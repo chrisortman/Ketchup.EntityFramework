@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using Migrator.Framework;
 
-namespace InnovativeSystems.OSS.WebDBU.Builders
+namespace Ketchup.EntityFramework.Migrations.Builders
 {
     public class TableBuilder
     {

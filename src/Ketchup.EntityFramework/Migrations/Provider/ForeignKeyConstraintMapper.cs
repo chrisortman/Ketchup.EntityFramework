@@ -1,6 +1,4 @@
-using Migrator.Framework;
-
-namespace Migrator.Providers
+namespace Ketchup.EntityFramework.Migrations.Provider
 {
 	public class ForeignKeyConstraintMapper
 	{

@@ -13,7 +13,7 @@
 
 using System.Data;
 
-namespace Migrator.Framework
+namespace Ketchup.EntityFramework.Migrations
 {
 	public interface IColumn
 	{
