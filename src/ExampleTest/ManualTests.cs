@@ -34,9 +34,28 @@ namespace ExampleTest {
 	[TestClass]
 	public class AutomacTest : PersistenceTest<ExampleContext> {
 		
+		public void ConfigureTests() {
+			ExternalLibraryBoundary.AreTheseTheSameEntity = (e1, e2) => {
+				return e1.Equals(e2);
+			};
+
+			ExternalLibraryBoundary.GetValueOfId = e => {
+				if (e is Customer) {
+					return ((Customer) e).ID.ToString();
+				}
+				else {
+					return "";
+				}
+			};
+
+			ExternalLibraryBoundary.IsThisAnEntityObject = e => {
+				return e is Customer;
+			};
+		}
+
 		[TestInitialize]
 		public void Setup() {
-			SetupEntityFrameworkContext();
+			SetupEntityFrameworkContext(useMigrations:true);
 		}
 
 		[TestMethod]

@@ -101,18 +101,7 @@ namespace MigratorGui {
 		#region Migrations
 
 		protected void DiscoverMigrations(object sender, RoutedEventArgs e) {
-			var catalog = new DirectoryCatalog(AppDomain.CurrentDomain.BaseDirectory);
-			var container = new CompositionContainer(catalog);
-			var migrations = container.GetExports<IMigration, IMigrationCapabilities>();
-			var assembliesWithMigrations = (from m in migrations
-			                                select m.Value.GetType().Assembly).Distinct();
-
-			if (assembliesWithMigrations.Count() > 1) {
-				MessageBox.Show("Multiple assembly migrations are not supported.");
-			}
-			else {
-				_migrationAssembly = assembliesWithMigrations.First();
-			}
+			_migrationAssembly = Migrator.DiscoverMigrationAssembly();
 		}
 
 		private Ketchup.EntityFramework.Migrations.Runner.Migrator GetMigrator() {

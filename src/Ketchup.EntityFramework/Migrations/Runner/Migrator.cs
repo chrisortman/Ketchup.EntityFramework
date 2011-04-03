@@ -1,6 +1,8 @@
 namespace Ketchup.EntityFramework.Migrations.Runner {
 	using System;
 	using System.Collections.Generic;
+	using System.ComponentModel.Composition.Hosting;
+	using System.Linq;
 	using System.Reflection;
 	using Ketchup.EntityFramework.Migrations.Loggers;
 
@@ -41,6 +43,21 @@ namespace Ketchup.EntityFramework.Migrations.Runner {
 			_migrationLoader.CheckForDuplicatedVersion();
 		}
 
+		public static Assembly DiscoverMigrationAssembly() {
+				var catalog = new DirectoryCatalog(AppDomain.CurrentDomain.BaseDirectory);
+			var container = new CompositionContainer(catalog);
+			var migrations = container.GetExports<IMigration, IMigrationCapabilities>();
+			var assembliesWithMigrations = (from m in migrations
+			                                select m.Value.GetType().Assembly).Distinct();
+
+			if (assembliesWithMigrations.Count() > 1) {
+				throw new ApplicationException("Multiple assembly migrations are not supported.");
+			} else if(assembliesWithMigrations.Count() == 0) {
+				throw new ApplicationException("No migration assemblies were found");
+			} else {
+				return assembliesWithMigrations.First();
+			}
+		}
 
 		/// <summary>
 		///   Returns registered migration <see cref = "System.Type">types</see>.

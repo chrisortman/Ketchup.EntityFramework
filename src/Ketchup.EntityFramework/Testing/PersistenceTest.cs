@@ -2,10 +2,12 @@ namespace Ketchup.EntityFramework.Testing {
 	using System;
 	using System.Data;
 	using System.Data.Entity;
+	using System.Data.Entity.Infrastructure;
 	using System.Data.Entity.Validation;
 	using System.Data.SqlClient;
 	using System.Linq;
 	using System.Reflection;
+	using Ketchup.EntityFramework.Migrations;
 
 	public abstract class PersistenceTest<CONTEXT> where CONTEXT : DbContext {
 		public const string TESTDB_CONNECTION = "TestDb";
@@ -134,15 +136,13 @@ The statement has been terminated.";
 			}
 		}
 
-		public void SetupEntityFrameworkContext() {
-			//DbDatabase.SetInitializer(new MigrationDatabaseInitializer<WebDatabase>()
-			//{
-			//    AlwaysDrop = true, 
-			//    ConnectionStringName = TESTDB_CONNECTION,
-			//    ConnectionFactory = () => new SqlCeConnection()
-			//});
-			//DbDatabase.SetInitializer<PaymentSessionContainer>(null); //dont need initializer for this db since it is the same as web, but it will error if we dont do this
+		public void SetupEntityFrameworkContext(bool useMigrations = false) {
+			
+      Database.DefaultConnectionFactory = new SqlCeConnectionFactory("System.Data.SqlServerCe.4.0");
 
+			if(useMigrations) {
+				Database.SetInitializer(new MigrationDatabaseInitializer<CONTEXT>(alwaysRecreateTheDatabase:true));
+			}
 
 			_efContext = CreateContext();
 			_efContext.Database.Initialize(true);

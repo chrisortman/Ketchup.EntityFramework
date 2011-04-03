@@ -73,6 +73,7 @@
     <Compile Include="Migrations\Loggers\SqlScriptFileLogger.cs" />
     <Compile Include="Migrations\Migration.cs" />
     <Compile Include="Migrations\MigrationAttribute.cs" />
+    <Compile Include="Migrations\MigrationDatabaseInitializer.cs" />
     <Compile Include="Migrations\MigrationException.cs" />
     <Compile Include="Migrations\Provider\ColumnPropertiesMapper.cs" />
     <Compile Include="Migrations\Provider\Dialect.cs" />
