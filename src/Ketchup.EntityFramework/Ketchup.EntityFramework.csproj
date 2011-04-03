@@ -81,6 +81,8 @@
     <Compile Include="Migrations\Provider\Dialect.cs" />
     <Compile Include="Migrations\Provider\ForeignKeyConstraintMapper.cs" />
     <Compile Include="Migrations\Provider\NoOpTransformationProvider.cs" />
+    <Compile Include="Migrations\Provider\SqlCe40\SqlCe4Dialect.cs" />
+    <Compile Include="Migrations\Provider\SqlCe40\SqlCe4TransformationProvider.cs" />
     <Compile Include="Migrations\Provider\SqlServer\SqlServer2005Dialect.cs" />
     <Compile Include="Migrations\Provider\SqlServer\SqlServerDialect.cs" />
     <Compile Include="Migrations\Provider\SqlServer\SqlServerTransformationProvider.cs" />

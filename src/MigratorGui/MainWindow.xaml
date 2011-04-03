@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="MigratorGui.MainWindow"
-        Title="Migrator" Height="350">
+    Loaded="DiscoverMigrations"    
+    Title="Migrator" Height="350">
     <Grid>
     	<Grid.RowDefinitions>
     		<RowDefinition Height="0.144*"/>
@@ -18,10 +19,11 @@
     	<StackPanel HorizontalAlignment="Left" Margin="0" Grid.Row="1" Orientation="Horizontal">
     		<TextBlock TextWrapping="Wrap" VerticalAlignment="Center" HorizontalAlignment="Left" Text="Version"/>
     		<TextBlock x:Name="VersionField" TextWrapping="Wrap" Text="1" VerticalAlignment="Center" Margin="5,0"/>
-    		<Button Content="Migrate Down" Width="75" VerticalAlignment="Center" Margin="5"/>
-    		<Button Content="Migrate Up" Width="75" VerticalAlignment="Center" Margin="5"/>
-    		<TextBox x:Name="MigrateToField" TextWrapping="Wrap" VerticalAlignment="Center" MinWidth="30"/>
-    		<Button Content="Migrate To" Width="75" VerticalAlignment="Center" Margin="5"/>
+    		<Button Content="Migrate Latest" VerticalAlignment="Center" HorizontalAlignment="Center" Click="MigrateToLatest"/>
+    		<Button Content="Migrate Down" Width="98" VerticalAlignment="Center" Margin="5" Click="MigrateDownOne"/>
+    		<Button Content="Migrate Up" Width="75" VerticalAlignment="Center" Margin="5" Click="MigrateUpOne"/>
+    		<TextBox x:Name="MigrateToField" TextWrapping="Wrap" VerticalAlignment="Center" MinWidth="30" />
+    		<Button Content="Migrate To" Width="75" VerticalAlignment="Center" Margin="5" Click="MigrateTo"/>
     	</StackPanel>
     	<ScrollViewer x:Name="ConsoleScroller" Grid.Row="2" >
     		<TextBlock x:Name="ConsoleMessagesField" TextWrapping="Wrap" ScrollViewer.CanContentScroll="True"/>
