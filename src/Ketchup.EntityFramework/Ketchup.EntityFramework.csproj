@@ -35,6 +35,7 @@
       <HintPath>..\packages\EntityFramework.4.1.10311.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
@@ -57,6 +58,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\EntityFramework.SqlServerCompact.cs" />
+    <Compile Include="Migrations\AwesomeMigration.cs" />
+    <Compile Include="Migrations\Builders\ColumnBuilder.cs" />
+    <Compile Include="Migrations\Builders\TableBuilder.cs" />
+    <Compile Include="Migrations\Column.cs" />
+    <Compile Include="Migrations\ColumnProperty.cs" />
+    <Compile Include="Migrations\DefaultSchemaInfoProvider.cs" />
+    <Compile Include="Migrations\ForeignKeyConstraint.cs" />
+    <Compile Include="Migrations\IColumn.cs" />
+    <Compile Include="Migrations\ILogger.cs" />
+    <Compile Include="Migrations\IMigration.cs" />
+    <Compile Include="Migrations\ITransformationProvider.cs" />
+    <Compile Include="Migrations\Loggers\ConsoleWriter.cs" />
+    <Compile Include="Migrations\Loggers\IAttachableLogger.cs" />
+    <Compile Include="Migrations\Loggers\ILogWriter.cs" />
+    <Compile Include="Migrations\Loggers\Logger.cs" />
+    <Compile Include="Migrations\Loggers\SqlScriptFileLogger.cs" />
+    <Compile Include="Migrations\Migration.cs" />
+    <Compile Include="Migrations\MigrationAttribute.cs" />
+    <Compile Include="Migrations\MigrationException.cs" />
+    <Compile Include="Migrations\Provider\ColumnPropertiesMapper.cs" />
+    <Compile Include="Migrations\Provider\Dialect.cs" />
+    <Compile Include="Migrations\Provider\ForeignKeyConstraintMapper.cs" />
+    <Compile Include="Migrations\Provider\NoOpTransformationProvider.cs" />
+    <Compile Include="Migrations\Provider\SqlServer\SqlServer2005Dialect.cs" />
+    <Compile Include="Migrations\Provider\SqlServer\SqlServerDialect.cs" />
+    <Compile Include="Migrations\Provider\SqlServer\SqlServerTransformationProvider.cs" />
+    <Compile Include="Migrations\Provider\TransformationProvider.cs" />
+    <Compile Include="Migrations\Provider\TypeNames.cs" />
+    <Compile Include="Migrations\Runner\BaseMigrate.cs" />
+    <Compile Include="Migrations\Runner\DuplicatedVersionException.cs" />
+    <Compile Include="Migrations\Runner\IrreversibleMigrationException.cs" />
+    <Compile Include="Migrations\Runner\MigrateAnywhere.cs" />
+    <Compile Include="Migrations\Runner\MigrationComparer.cs" />
+    <Compile Include="Migrations\Runner\MigrationLoader.cs" />
+    <Compile Include="Migrations\Runner\Migrator.cs" />
+    <Compile Include="Migrations\Runner\ProviderFactory.cs" />
+    <Compile Include="Migrations\Runner\Tools\SchemaDumper.cs" />
+    <Compile Include="Migrations\StringUtils.cs" />
     <Compile Include="Testing\CollectionPropertyPersistenceCheck.cs" />
     <Compile Include="Testing\ExternalLibraryBoundary.cs" />
     <Compile Include="Testing\ISetupEntityForTests.cs" />

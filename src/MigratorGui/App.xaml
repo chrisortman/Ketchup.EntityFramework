@@ -1,0 +1,9 @@
+﻿<Application x:Class="MigratorGui.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <vm:GlobalViewModelLocator xmlns:vm="clr-namespace:MigratorGui"
+                                   x:Key="Locator" />
+    </Application.Resources>
+</Application>
